@@ -10,10 +10,9 @@ const login = async (req,res) => {
     try{
         const {email, password} = req.body;
         const getUser = await registerModel.findOne({email:email})
-        console.log(getUser)
         if (getUser) {
             const match = await bcrypt.compare(password, getUser.password);
-            console.log(match);
+            //console.log(match);
             if(match) {
                 // Your payload
                 const token = jwt.sign({
@@ -23,12 +22,13 @@ const login = async (req,res) => {
                         id:getUser._id
                     }
                 }, secret, { expiresIn: '10m' });
+                
                 res.json({
                     success:true,
                     token:token,
                     Login:"login successfully"
                 })
-                console.log(token);
+                //console.log(token);
             }
         } else {
             return res.json({
