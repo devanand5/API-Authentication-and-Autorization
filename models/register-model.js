@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { kMaxLength } = require('node:buffer');
 
 const registerSchema = new mongoose.Schema({
     name:{
@@ -29,6 +28,5 @@ const registerSchema = new mongoose.Schema({
     
     }, { timestamps:true }
 );
-const registerModel = mongoose.model("register-data", registerSchema);
+module.exports =  mongoose.model("register-data", registerSchema);
 
-module.exports = registerModel;

@@ -18,7 +18,7 @@ const addUser = async(req,res) => {
             {
                 success : true,
                 msg:'data added successfully',
-                date:newuser
+                data:newuser
             }
         )
         } else{
@@ -55,7 +55,7 @@ const getAllData = async(req,res)=>{
 const getById = async(req,res)=> {
     try{
         const getbyid = req.params.id;
-        const findData = await registerModel.findOne({_id:getbyid})
+        const findData = await registerModel.findById(getbyid)
         if (findData) return res.json({
             success:true,
             data:findData
